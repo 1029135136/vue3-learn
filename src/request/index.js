@@ -8,7 +8,6 @@ const service = axios.create({
     headers: {
         // 设置后端需要的传参类型
         'Content-Type': 'application/json',
-        'token': '',
         'Authorization': window.localStorage.getItem('accessToken')
     },
 })

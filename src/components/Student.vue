@@ -143,9 +143,11 @@ const pageData = ref({
   records: ref([]),
   total: 0,
 });
+
 page({page: pageData.value.current, size: pageData.value.size}).then(res => {
   pageData.value = res.body;
 })
+
 const handleSave = () => {
   save(createForm).then(res => {
     console.log(res)

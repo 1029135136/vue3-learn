@@ -11,8 +11,16 @@
         <el-input v-model="form.password"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="btnLogin()">登录</el-button>
-        <el-button type="primary" @click="btnRegister()">注册</el-button>
+        <el-row :gutter="100">
+          <el-col :span="6">
+            <el-button type="primary" @click="btnLogin()">登录</el-button>
+          </el-col>
+          <el-col :span="6">
+            <router-link to="/register">
+              <el-button type="primary">注册</el-button>
+            </router-link>
+          </el-col>
+        </el-row>
       </el-form-item>
     </el-form>
   </div>
@@ -40,6 +48,7 @@ const btnLogin = () => {
       success();
       proxy.$router.push('/home')
       window.localStorage.setItem('accessToken', 'Bearer ' + res.body)
+      window.localStorage.setItem('username', form.username)
     }
   });
 }

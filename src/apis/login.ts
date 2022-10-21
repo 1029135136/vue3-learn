@@ -7,10 +7,19 @@ interface UserInfoParam {
     password: string
 }
 
-// 获取用户信息
+// 登录
 export function login(param: UserInfoParam) {
     return httpRequest({
         url: 'user/login',
+        method: 'post',
+        data: param,
+    })
+}
+
+// 注册
+export function register(param: UserInfoParam) {
+    return httpRequest({
+        url: 'user/register',
         method: 'post',
         data: param,
     })
