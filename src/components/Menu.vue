@@ -13,7 +13,9 @@
         <el-menu-item index="/student">
           <router-link to="/student">学生管理</router-link>
         </el-menu-item>
-        <el-menu-item index="3">教室管理</el-menu-item>
+        <el-menu-item index="classRoom">
+          <router-link to="/classRoom">教室管理</router-link>
+        </el-menu-item>
         <el-menu-item index="4">课程管理</el-menu-item>
         <el-menu-item index="5">教师管理</el-menu-item>
       </el-menu>
