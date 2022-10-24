@@ -1,13 +1,11 @@
 <template>
   <div>
-<!--    <Menu/>-->
-    <el-button id="create" type="primary" size="small" @click="createFormVisible = true">新增学生</el-button>
+    <el-button id="create" type="primary" size="small" @click="createFormVisible = true">新增菜单</el-button>
     <el-table id="table" :data="pageData.records" style="width: 100%">
       <el-table-column prop="id" label="序号" width="50"/>
-      <el-table-column prop="name" label="姓名" width="100"/>
-      <el-table-column prop="cardId" label="学号" width="100"/>
-      <el-table-column prop="classRoomName" label="教室" width="100"/>
-      <el-table-column fixed="right" label="操作" width="100">
+      <el-table-column prop="name" label="名称" width="100"/>
+      <el-table-column prop="path" label="地址" width="auto"/>
+      <el-table-column fixed="right" label="操作" width="180">
         <template #default="scope">
           <el-button link type="primary" size="small" @click="handleEdit(scope.row)">编辑</el-button>
           <el-button link type="danger" text @click="handleDelete(scope.row)">删除</el-button>
@@ -26,12 +24,13 @@
     />
     <el-dialog v-model="createFormVisible" title="新增" align-center>
       <el-form :model="createForm">
-        <el-form-item label="姓名" :label-width="180">
+        <el-form-item label="名称" :label-width="180">
           <el-input v-model="createForm.name" autocomplete="off"/>
         </el-form-item>
-        <el-form-item label="学号" :label-width="180">
-          <el-input v-model="createForm.cardId" autocomplete="off"/>
+        <el-form-item label="地址" :label-width="180">
+          <el-input v-model="createForm.path" autocomplete="off"/>
         </el-form-item>
+
       </el-form>
       <template #footer>
                 <span class="dialog-footer">
@@ -43,11 +42,11 @@
     <el-dialog v-model="editFormVisible" title="编辑" align-center>
       <el-form :model="updateForm">
         <el-input v-model="updateForm.id" hidden/>
-        <el-form-item label="姓名" :label-width="180">
+        <el-form-item label="名称" :label-width="180">
           <el-input v-model="updateForm.name" autocomplete="off"/>
         </el-form-item>
-        <el-form-item label="学号" :label-width="180">
-          <el-input v-model="updateForm.cardId" autocomplete="off"/>
+        <el-form-item label="地址" :label-width="180">
+          <el-input v-model="updateForm.path" autocomplete="off"/>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -61,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import {page, update, save, destroy} from '../apis/student.ts'
+import {page, update, save, destroy} from '../apis/menu.ts'
 import Menu from "./Menu.vue";
 import {ref, reactive} from "vue";
 import {ElMessage, ElMessageBox} from 'element-plus'
@@ -70,12 +69,12 @@ const editFormVisible = ref(false)
 const createFormVisible = ref(false)
 const updateForm = reactive({
   name: '',
-  cardId: '',
+  path: '',
   id: ''
 })
 const createForm = reactive({
   name: '',
-  cardId: '',
+  path: '',
 })
 const success = (str) => {
   ElMessage({
@@ -134,7 +133,7 @@ const handleEdit = (row) => {
   editFormVisible.value = true
   updateForm.id = row.id;
   updateForm.name = row.name;
-  updateForm.cardId = row.cardId;
+  updateForm.path = row.path;
 };
 
 const pageData = ref({

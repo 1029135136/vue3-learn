@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu/>
+<!--    <Menu/>-->
     <el-button id="create" type="primary" size="small" @click="createFormVisible = true">新增教室</el-button>
     <el-table id="table" :data="pageData.records" style="width: 100%">
       <el-table-column prop="id" label="序号" width="50"/>
@@ -29,8 +29,11 @@
         <el-form-item label="姓名" :label-width="180">
           <el-input v-model="createForm.name" autocomplete="off"/>
         </el-form-item>
-        <el-form-item label="学号" :label-width="180">
-          <el-input v-model="createForm.cardId" autocomplete="off"/>
+        <el-form-item label="班主任ID" :label-width="180">
+          <el-input v-model="createForm.teacherId" autocomplete="off"/>
+        </el-form-item>
+        <el-form-item label="年级" :label-width="180">
+          <el-input v-model="createForm.grade" autocomplete="off"/>
         </el-form-item>
       </el-form>
       <template #footer>

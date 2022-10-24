@@ -4,6 +4,8 @@ import Login from "../components/Login.vue";
 import Student from "../components/Student.vue";
 import Register from "../components/Register.vue";
 import ClassRoom from "../components/ClassRoom.vue";
+import Teacher from "../components/Teacher.vue";
+import MenuManagement from "../components/MenuManagement.vue";
 
 const routes = [
     {
@@ -25,6 +27,16 @@ const routes = [
         path: "/classRoom",
         name: "ClassRoom",
         component: ClassRoom,
+    },
+    {
+        path: "/teacher",
+        name: "Teacher",
+        component: Teacher,
+    },
+    {
+        path: "/menuManagement",
+        name: "MenuManagement",
+        component: MenuManagement,
     },
     {
         path: "/register",

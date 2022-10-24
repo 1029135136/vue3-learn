@@ -1,4 +1,13 @@
 import axios from 'axios'
+import {ElMessage, ElMessageBox} from 'element-plus'
+
+const success = (str) => {
+    ElMessage({
+        message: str,
+        type: 'success'
+    })
+}
+
 
 // 创建一个 axios 实例
 const service = axios.create({
@@ -21,6 +30,7 @@ service.interceptors.request.use(
     function (error) {
         // 对请求错误做些什么
         console.log(error)
+        ElMessage.error('请求错误');
         // @ts-ignore
         return Promise.reject(error)
     }
@@ -42,6 +52,7 @@ service.interceptors.response.use(
         // 超出 2xx 范围的状态码都会触发该函数。
         // 对响应错误做点什么
         console.log(error)
+        ElMessage.error('响应错误: ', error);
         // @ts-ignore
         return Promise.reject(error)
     }

@@ -2,22 +2,27 @@
   <el-row :gutter="30">
     <el-col :span="20">
       <el-menu
-          :default-active="activeIndex"
+          :default-active="$route.path"
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
-      >
-        <el-menu-item index="/home">
-          <router-link to="/home">首页</router-link>
+          router
+      > <!--绑定vue-route的路由-->
+        <el-menu-item index="/home" route="/home">
+          首页
         </el-menu-item>
-        <el-menu-item index="/student">
-          <router-link to="/student">学生管理</router-link>
+        <el-menu-item index="/student" route="/student">
+          学生管理
         </el-menu-item>
-        <el-menu-item index="classRoom">
-          <router-link to="/classRoom">教室管理</router-link>
+        <el-menu-item index="/classRoom" route="/classRoom">
+          教室管理
         </el-menu-item>
-        <el-menu-item index="4">课程管理</el-menu-item>
-        <el-menu-item index="5">教师管理</el-menu-item>
+        <el-menu-item index="/teacher" route="/teacher">
+          教师管理
+        </el-menu-item>
+        <el-menu-item index="/menuManagement" route="/menuManagement">
+          菜单管理
+        </el-menu-item>
       </el-menu>
     </el-col>
     <el-col :span="4">
@@ -39,12 +44,10 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
 import {getCurrentInstance} from "vue";
 import {ElMessage} from "element-plus";
 
 const {proxy} = getCurrentInstance()
-const activeIndex = ref('/home')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -66,10 +69,4 @@ const success = (str) => {
 
 </script>
 <style scoped lang="css">
-.example-showcase .el-dropdown-link {
-  cursor: pointer;
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
-}
 </style>

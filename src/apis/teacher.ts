@@ -4,7 +4,7 @@ import httpRequest from '../request'
 // 获取用户信息
 export function page(params) {
     return httpRequest({
-        url: 'classRoom/page',
+        url: 'teacher/page',
         method: 'get',
         params: params
     })
@@ -12,7 +12,7 @@ export function page(params) {
 
 export function update(data) {
     return httpRequest({
-        url: 'classRoom/update',
+        url: 'teacher/update',
         method: 'put',
         data: data
     })
@@ -20,7 +20,7 @@ export function update(data) {
 
 export function save(data) {
     return httpRequest({
-        url: 'classRoom/save',
+        url: 'teacher/save',
         method: 'post',
         data: data
     })
@@ -28,7 +28,7 @@ export function save(data) {
 
 export function destroy(id) {
     return httpRequest({
-        url: 'classRoom/' + id,
+        url: 'teacher/' + id,
         method: 'delete',
     })
 }
